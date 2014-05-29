@@ -5,7 +5,10 @@ int w = 640,
     h = 100,
     fg = 0,
     bg = 255,
-    fontSize = 32;
+    fontSize = 32,
+    n = 1;
+
+String m;
 
 void setup() {
   size(w, h);
@@ -13,19 +16,30 @@ void setup() {
   fill(fg);
   background(bg);
 
-  translate(w/2, h/2);
-
   textSize(fontSize);
   textAlign(CENTER, CENTER);
 
-  String s = mandelbrot(1);
-  text(s, 0, 0);
+  translate(w/2, h/2);
+  m = mandelbrot(1);
+  text(m, 0, 0);
+
+  frameRate(1);
+}
+
+void draw() {
+  background(bg);
+
+  translate(w/2, h/2);
+
+  m = mandelbrot(n);
+  text(m, 0, 0);
+  n += 1;
 }
 
 String mandelbrot(int n) {
-  String s = "B.";
+  String m = "B.";
   for (int i = 0; i < n; i++) {
-    s = "Benoit " + s + " Mandelbrot";
+    m = "Benoit " + m + " Mandelbrot";
   }
-  return s;
+  return m;
 }
