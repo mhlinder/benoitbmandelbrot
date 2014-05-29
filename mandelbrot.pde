@@ -15,17 +15,21 @@ void setup() {
   size(w, h);
 
   fill(fg);
-  background(bg);
 
   textSize(fontSize);
   textAlign(LEFT, CENTER);
 
-  translate(w/2, h/2);
-  m = mandelbrot(1);
-  text(m, 0, 0);
+  mandelPlot();
 }
 
-void draw() {
+void draw() { }
+
+void mouseClicked() {
+  n += 1;
+  mandelPlot();
+}
+
+void mandelPlot() {
   background(bg);
 
   translate(w/2, h/2);
@@ -36,9 +40,6 @@ void draw() {
   text(m, -offset, 0);
 }
 
-void mouseClicked() {
-  n += 1;
-}
 
 String first()  { return "Benoit "; }
 String middle() { return "B."; }
