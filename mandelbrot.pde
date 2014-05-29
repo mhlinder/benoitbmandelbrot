@@ -5,10 +5,11 @@ int w = 640,
     h = 100,
     fg = 0,
     bg = 255,
-    fontSize = 32,
+    fontSize = 16,
     n = 1;
 
-String m;
+String m, first;
+float offset;
 
 void setup() {
   size(w, h);
@@ -17,13 +18,11 @@ void setup() {
   background(bg);
 
   textSize(fontSize);
-  textAlign(CENTER, CENTER);
+  textAlign(LEFT, CENTER);
 
   translate(w/2, h/2);
   m = mandelbrot(1);
   text(m, 0, 0);
-
-  frameRate(1);
 }
 
 void draw() {
@@ -32,14 +31,31 @@ void draw() {
   translate(w/2, h/2);
 
   m = mandelbrot(n);
-  text(m, 0, 0);
+  first = nfirst(n);
+  offset = textWidth(first) + textWidth(middle())/2;
+  text(m, -offset, 0);
+}
+
+void mouseClicked() {
   n += 1;
 }
 
-String mandelbrot(int n) {
-  String m = "B.";
+String first()  { return "Benoit "; }
+String middle() { return "B."; }
+String last()   { return " Mandelbrot"; }
+
+String nfirst(int n) {
+  String s = "";
   for (int i = 0; i < n; i++) {
-    m = "Benoit " + m + " Mandelbrot";
+    s = s + first();
+  }
+  return s;
+}
+
+String mandelbrot(int n) {
+  String m = middle();
+  for (int i = 0; i < n; i++) {
+    m = first() + m + last();
   }
   return m;
 }
