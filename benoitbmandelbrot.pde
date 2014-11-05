@@ -5,7 +5,7 @@ int w = 1200,
     h = 600,
     fg = 0,
     bg = 255,
-    fontSize = 14,
+    fontSize = 18,
     n = 1;
 
 String m, first;
