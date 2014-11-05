@@ -35,9 +35,15 @@ void mandelPlot() {
   translate(w/2, h/2);
 
   m = mandelbrot(n);
-  first = nfirst(n);
-  offset = textWidth(first) + textWidth(middle())/2;
+  // // Keep 'B.' centered
+  // first = nfirst(n);
+  // offset = textWidth(first) + textWidth(middle())/2;
+
+  // Center whole name
+  offset = textWidth(m)/2;
   text(m, -offset, 0);
+
+  saveFrame("bbm" + nf(n, 2) + ".gif");
 }
 
 
